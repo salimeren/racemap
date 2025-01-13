@@ -1,0 +1,111 @@
+{% extends 'maps/base.html' %}
+
+{% block content %}
+    <div class="form-container" style="position: absolute; top: 5%; left: 15%; width: 40%;">
+        <h2>Create Component</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="option">Select Option:</label>
+                <select name="option" id="option" required>
+                    {% for key, description in options.items %}
+                        <option value="{{ key }}">{{ key }} - {{ description }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="rows">Rows:</label>
+                <input type="number" id="rows" name="rows" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cols">Columns:</label>
+                <input type="number" id="cols" name="cols" required>
+            </div>
+
+            <button type="submit" class="btn">Submit</button>
+        </form>
+
+        {% if response %}
+            <div class="success-message">
+                <p>{{ response }}</p>
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="error-message">
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <style>
+        .form-container {
+            background-color: #fff;
+            padding: 10px;
+            max-width: 320px;
+        }
+
+        .form-container h2 {
+            color: #333;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 6px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .success-message {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .error-message {
+            padding: 10px;
+            background-color: #dc3545;
+            color: white;
+            border-radius: 5px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        header nav ul li a.btn {
+            padding: 10px 15px;
+            font-size: 14px;
+            margin: 5px;
+        }
+    </style>
+{% endblock %}

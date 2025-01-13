@@ -1,0 +1,33 @@
+{% extends 'maps/base.html' %}
+
+{% block content %}
+    {% if not map_id %}
+        <div class="form-container">
+            <h2>Create New Map</h2>
+            <form method="POST" action="{% url 'create_map' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="map_id">Map ID:</label>
+                    <input type="number" id="map_id" name="map_id" required>
+                </div>
+                <div class="form-group">
+                    <label for="cols">Columns:</label>
+                    <input type="number" id="cols" name="cols" required>
+                </div>
+                <div class="form-group">
+                    <label for="rows">Rows:</label>
+                    <input type="number" id="rows" name="rows" required>
+                </div>
+                <div class="form-group">
+                    <label for="cellsize">Cell Size:</label>
+                    <input type="number" id="cellsize" name="cellsize" required>
+                </div>
+                <div class="form-group">
+                    <label for="bgcolor">Background Color:</label>
+                    <input type="text" id="bgcolor" name="bgcolor" required>
+                </div>
+                <button type="submit" class="btn">Create Map</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

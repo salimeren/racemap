@@ -1,0 +1,102 @@
+{% extends 'maps/base.html' %}
+{% load static %}
+
+{% block content %}
+    
+    {% if not error and grid %}
+    <!--background-color: {{ color }}; -->
+    <div class="grid-container" style="position: absolute; top: 5%; right: 15%; width: 40%; background-color: {{ color }};">
+        <h2>Map: {{ map_id }}</h2>
+        <table class="grid-table">
+            <tr>
+                {% for row in grid %}
+                    <tr>
+                        {% for cell, rotation in row %}
+
+                            {% if cell %}
+
+                                <td class="grid-cell">
+                                <!--img src="{% static 'maps/images/car_topview.svg' %}" alt="SVG Image" style="width: 100%; height: 100%;"-->
+                                <img src="{% static cell %}" alt="SVG Image" style="width: 100%; height: 100%; transform: rotate({{ rotation }}deg);">
+                                </td>
+
+                            {% else %}
+
+                                <td class="grid-cell">cell</td>
+
+                            {% endif %}
+
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+    {% endif %}
+
+    <style>
+
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .grid-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .grid-cell {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            border: 1px solid #000;
+        }
+
+        .grid-cell img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .grid-container {
+            padding: 10px;
+        }
+
+        .success-message {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .error-message {
+            padding: 10px;
+            background-color: #dc3545;
+            color: white;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        header nav ul li a.btn {
+            padding: 10px 15px;
+            font-size: 14px;
+            margin: 5px;
+        }
+    </style>
+{% endblock %}

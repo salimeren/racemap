@@ -1,0 +1,78 @@
+{% extends 'maps/base.html' %}
+
+{% block content %}
+    <div class="form-container" style="position: absolute; top: 5%; left: 15%; width: 40%;">
+        <h2>Rotate Component</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="component_id">Component ID:</label>
+                <input type="number" id="component_id" name="component_id" required>
+            </div>
+
+            <button type="submit" class="btn">Rotate Component</button>
+        </form>
+
+        {% if response %}
+            <div class="response-message">
+                <p>{{ response }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <style>
+        .form-container {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 320px;
+        }
+
+        .form-container h2 {
+            color: #333;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 6px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            font-size: 13px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .response-message {
+            padding: 10px;
+            background-color: #f9f9f9;
+            color: #333;
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+{% endblock %}

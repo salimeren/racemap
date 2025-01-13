@@ -1,0 +1,110 @@
+{% extends 'maps/base.html' %}
+
+{% block content %}
+    <div class="form-container" style="position: absolute; top: 5%; left: 15%; width: 40%;">
+        <h2>Available Maps</h2>
+
+        <form method="POST" >
+            {% csrf_token %}
+            <div class="form-group">
+                <ul style="list-style-type: none; padding: 0;">
+                    {% for map_id in map_list %}
+                    <li style="margin-bottom: 8px;">
+                        <input type="radio" id="map_{{ map_id }}" name="selected_map" value="{{ map_id }}">
+                        <label for="map_{{ map_id }}">{{ map_id }}</label>
+                    </li>
+                    {% empty %}
+                    <p>No maps available.</p>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="button-container">
+                <button type="submit" class="btn">Attach Selected Map</button>
+            </div>
+
+        </form>
+    </div>
+
+    {% if success_message %}
+    <div class="success-message">
+        <p>{{ success_message }}</p>
+    </div>
+    {% endif %}
+
+    {% if error_message %}
+    <div class="error-message">
+        <p>{{ error_message }}</p>
+    </div>
+    {% endif %}
+
+    <style>
+        .form-container {
+            background-color: #fff;
+            padding: 10px;
+            max-width: 320px;
+        }
+
+        .form-container h2 {
+            color: #333;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .form-group li {
+            margin-bottom: 8px;
+        }
+
+        .form-group input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .success-message {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .error-message {
+            padding: 10px;
+            background-color: #dc3545;
+            color: white;
+            border-radius: 5px;
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+
+
+{% endblock %}

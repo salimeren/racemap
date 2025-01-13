@@ -1,0 +1,150 @@
+{
+    "objects": {
+        "5": {
+            "cols": 5,
+            "rows": 5,
+            "cellsize": 5,
+            "bgcolor": "red",
+            "cells": [
+                [
+                    [
+                        {
+                            "type": "booster",
+                            "id": 0,
+                            "row": 0,
+                            "col": 0,
+                            "rotation": 0
+                        }
+                    ],
+                    [
+                        {
+                            "type": "straight",
+                            "id": 1,
+                            "row": 0,
+                            "col": 0,
+                            "rotation": 0
+                        }
+                    ],
+                    [],
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    [],
+                    [],
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    [],
+                    [],
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    [],
+                    [],
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    [],
+                    [],
+                    [],
+                    []
+                ]
+            ],
+            "components": {
+                "booster": {
+                    "type": "booster",
+                    "id": 0,
+                    "row": 0,
+                    "col": 0,
+                    "rotation": 0
+                },
+                "straight": {
+                    "type": "straight",
+                    "id": 1,
+                    "row": 0,
+                    "col": 0,
+                    "rotation": 0
+                },
+                "Ferrari": {
+                    "id": 2,
+                    "model": "Ferrari",
+                    "driver": null,
+                    "pos": [
+                        0,
+                        0
+                    ],
+                    "angle": 0,
+                    "topspeed": 250,
+                    "topfuel": 100,
+                    "speed": 0.0,
+                    "fuel": 100,
+                    "carStarted": false,
+                    "accelFlag": false,
+                    "breakFlag": false,
+                    "turnLeftFlag": false,
+                    "turnRightFlag": false,
+                    "next_checkpoint": 0
+                }
+            },
+            "game_active": false,
+            "tick_count": 0,
+            "notification_period": -1,
+            "server": null
+        }
+    },
+    "users": {
+        "eren": [
+            5
+        ]
+    },
+    "objowners": {
+        "5": [
+            "eren"
+        ]
+    },
+    "component_dict": {
+        "0": {
+            "type": "booster",
+            "id": 0,
+            "row": 0,
+            "col": 0,
+            "rotation": 0
+        },
+        "1": {
+            "type": "straight",
+            "id": 1,
+            "row": 0,
+            "col": 0,
+            "rotation": 0
+        },
+        "2": {
+            "id": 2,
+            "model": "Ferrari",
+            "driver": null,
+            "pos": [
+                0,
+                0
+            ],
+            "angle": 0,
+            "topspeed": 250,
+            "topfuel": 100,
+            "speed": 0.0,
+            "fuel": 100,
+            "carStarted": false,
+            "accelFlag": false,
+            "breakFlag": false,
+            "turnLeftFlag": false,
+            "turnRightFlag": false,
+            "next_checkpoint": 0
+        }
+    },
+    "id_counter": 3
+}

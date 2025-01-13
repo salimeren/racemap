@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+        
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Map Project{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 5px;
+            background-color:rgb(255, 0, 0);
+            color: white;
+            text-decoration: none;
+        }
+
+        .username-form {
+            margin: 20px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}" class="btn">Home</a></li>
+                {% if username_submitted %}
+                    <li><a href="{% url 'create_map' %}" class="btn">Create New Map</a></li>
+                    <li><a href="{% url 'create_component' %}" class="btn">Create Component</a></li>
+                    <li><a href="{% url 'list_maps' %}" class="btn">List Maps</a></li>
+                    <li><a href="{% url 'view_map' %}" class="btn">View Attached Map</a></li>
+                    <li><a href="{% url 'delete_component' %}" class="btn">Delete Component</a></li>
+                    <li><a href="{% url 'rotate_component' %}" class="btn">Rotate Component</a></li>
+                    
+                    <li>
+                        <form action="{% url 'save_repo' %}" method="POST" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn">Save Repo</button>
+                        </form>
+                    </li>
+
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="username-form">
+            {% if not username_submitted %}
+                <form id="username-form" method="POST">
+                    {% csrf_token %}
+                    <label for="username">Enter your username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+            {% else %}
+                <p>Logged in as: {{ username }}</p>
+                <form action="{% url 'logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">Logout</button>
+                </form>
+            {% endif %}
+        </div>
+
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <script>
+        setInterval(() => {
+            if (window.location.pathname === "{% url 'view_map' %}") {
+                window.location.href = "{% url 'view_map' %}";
+            }
+        }, 5000);
+    </script>
+    
+
+
+</body>
+</html>
+

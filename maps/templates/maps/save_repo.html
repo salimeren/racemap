@@ -1,0 +1,9 @@
+{% extends 'maps/base.html' %}
+
+{% block content %}
+    {% if response %}
+        <p>{{ response }}</p>  <!-- Display the response below the button -->
+    {% else %}
+        <p>Click "Save Repo" to trigger the save operation.</p>
+    {% endif %}
+{% endblock %}

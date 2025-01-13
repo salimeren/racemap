@@ -1,0 +1,118 @@
+{% extends 'maps/base.html' %}
+
+{% block content %}
+    <div class="form-container" style="position: absolute; top: 5%; left: 15%; width: 40%;">
+        <h2>Create a New Map</h2>
+        <form method="POST" action="{% url 'create_map' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="map_id">Map ID:</label>
+                <input type="number" id="map_id" name="map_id" required>
+            </div>
+            <div class="form-group">
+                <label for="cols">Columns:</label>
+                <input type="number" id="cols" name="cols" required>
+            </div>
+            <div class="form-group">
+                <label for="rows">Rows:</label>
+                <input type="number" id="rows" name="rows" required>
+            </div>
+            <div class="form-group">
+                <label for="cellsize">Cell Size:</label>
+                <input type="number" id="cellsize" name="cellsize" required>
+            </div>
+            <div class="form-group">
+                <label for="bgcolor">Background Color:</label>
+                <input type="text" id="bgcolor" name="bgcolor" required>
+            </div>
+
+            <button type="submit" class="btn" name="action" value="create_map">Create Map</button>
+            <button type="submit" class="btn" name="action" value="attach_map">Create and Attach</button>
+                
+
+        </form>
+
+        {% if map_id %}
+
+        <div class="success-message">
+            <p>{{ message }}</p>
+        </div>
+
+        {% endif %}
+
+        {% if error %}
+        <div class="error-message">
+            <p>{{ error }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <style>
+        .form-container {
+            background-color: #fff;
+            padding: 10px;
+            max-width: 320px;
+        }
+
+        .form-container h2 {
+            color: #333;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 6px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            font-size: 13px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .success-message {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .error-message {
+            padding: 10px;
+            background-color: #dc3545;
+            color: white;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        header nav ul li a.btn {
+            padding: 10px 15px;
+            font-size: 14px;
+            margin: 5px;
+        }
+    </style>
+{% endblock %}
